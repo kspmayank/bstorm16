@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :question %><br>
-    <%= f.text_area :question %>
+    <%= f.cktext_area :question, :class => 'ques', :ckeditor => {:language => 'en'} %>
   </div>
   <div class="field">
     <%= f.label :answer %><br>

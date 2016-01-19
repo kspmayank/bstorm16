@@ -1,12 +1,31 @@
 Rails.application.routes.draw do
+  get 'play/index'
+
+  get 'play/show'
+
+  get 'play/:id' => 'play#show'
+
+  post 'attempt/:id' => 'play#attempt'
+
+  mount Ckeditor::Engine => '/ckeditor'
+  get 'welcome/index'
+
+  get 'welcome/admin'
+
+  get '/leaderboard' => 'welcome#leaderboard'
+
+  get 'welcome/rules'
+
+  post '/addname' => 'welcome#addname'
+
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   resources :levels
-  root 'levels#index'
+  #root 'levels#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

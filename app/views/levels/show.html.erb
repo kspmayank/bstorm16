@@ -2,7 +2,7 @@
 
 <p>
   <strong>Question:</strong>
-  <%= @level.question %>
+  <%= @level.question.html_safe %>
 </p>
 
 <p>
@@ -12,7 +12,7 @@
 
 <p>
   <strong>Link:</strong>
-  <%= @level.link %>
+  <a href="<%= @level.link %>">Link</a>
 </p>
 
 <p>
@@ -20,5 +20,10 @@
   <%= @level.hint %>
 </p>
 
-<%= link_to 'Edit', edit_level_path(@level) %> |
-<%= link_to 'Back', levels_path %>
+
+<%if current_user.is_admin == true%>
+	<%= link_to 'Edit', edit_level_path(@level) %> |
+	<%= link_to 'Back', levels_path %>
+<%else%>
+	<a href="/levels/<%=@l.to_i+1%>">Next Level</a>
+<%end%>

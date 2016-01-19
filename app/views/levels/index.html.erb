@@ -16,7 +16,7 @@
   <tbody>
     <% @levels.each do |level| %>
       <tr>
-        <td><%= level.question %></td>
+        <td><%= level.question.html_safe %></td>
         <td><%= level.answer %></td>
         <td><%= level.link %></td>
         <td><%= level.hint %></td>

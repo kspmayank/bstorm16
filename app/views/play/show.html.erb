@@ -1,0 +1,20 @@
+<h1>Level <%=@lvl.id%></h1>
+
+<%=@lvl.question.html_safe%>
+<%#if @lvl.link == nil%>
+	<a href="http://<%=@lvl.link%>">Sound Link</a>
+<%#else%>
+	<!-- <span>no sound link</span> -->
+<%#end%>
+<br><br>
+<%= bootstrap_form_for :attempt, url: '/attempt/'+@lvl.id.to_s do |f|%>
+	<%=f.text_field :attempt, placeholder: 'Enter your Answer'%>
+	<%=f.submit 'Submit Answer'%>
+<%end%>
+
+<h3>Attempts</h3>
+<%#@at.each do |a|%>
+	<%@at.where(level_id: @lvl.id).all.each do |at|%>
+		<%=at.attempt%>, 
+	<%end%>
+<%#end%>

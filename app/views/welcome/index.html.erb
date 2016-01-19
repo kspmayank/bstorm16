@@ -1,0 +1,12 @@
+<h1>Welcome to Brainstorm 2016</h1>
+<br>
+<h3>Hey, <%=current_user.name%>. Would you like to play?</h3><br>
+<a href="/play/index" class="btn btn-success" style="color:#fff;">Enter Game</a>
+
+<br><br>
+<% if current_user.name == nil%>
+	<%=bootstrap_form_for :user, url: '/addname' do |u|%>
+		<%= u.text_field :name, placeholder: 'Enter Your Name' %>
+		<%= u.submit "Submit" %>
+	<%end%>
+<%end%>
